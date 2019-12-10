@@ -1,0 +1,54 @@
+
+<%- include('modal-new-room'); %>
+
+<% for(var i in messages.error) { %>
+    <div class="flash-message d-none"><%= messages.error[i] %></div>
+<% } %>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script type="text/javascript" src="/js/vendors/jquery/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/vendors/popper/popper.min.js"></script>
+<script type="text/javascript" src="/js/vendors/boostrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript" src="/js/vendors/toast/toast.min.js"></script>
+
+<script type="text/javascript">
+
+    $(".flash-message").each(function(){
+
+        $.toast({
+            title: "Error",
+            content: $(this).text(),
+            type: "error",
+            delay: 5000,
+        });
+    });
+
+    if (["127.0.0.1", "localhost"].includes(location.hostname)) {
+        
+        var script = document.createElement('script');
+        
+        script.src = "http://" + (location.host || 'localhost').split(':')[0] + ":35729/livereload.js?snipver=1"
+                
+        document.head.appendChild(script);
+    } else {
+
+        // if (window.location.protocol != "https:") {
+        // 	window.location.protocol = "https:";
+        // 	window.location.reload();
+        // }
+    }
+
+    $(function(){
+
+        $('.datatable').DataTable();
+
+        // Every time a modal is shown, if it has an autofocus element, focus on it.
+        $('.modal').on('shown.bs.modal', function() {
+            $(this).find('[autofocus]').focus();
+        });
+    });
+    
+</script>

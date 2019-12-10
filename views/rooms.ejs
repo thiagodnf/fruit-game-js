@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('partials/head'); %>
+    </head>
+	<body>
+	
+		<%- include('partials/navbar', {active: 'rooms'}); %>
+
+		<div class="container-fluid">
+			<div class="row mt-4">
+				<div class="col-sm-12">
+					<div class="card">
+						<div class="card-header">
+							<span class="font-weight-bold">Rooms</span>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-striped datatable">
+									<thead>
+										<tr>
+											<th>Name</th>
+											<th width="40px">Protected</th>
+											<th width="40px">Player</th>
+										</tr>
+									</thead>
+									<tbody>
+										<% for(var i in rooms) { %>
+											<tr>
+												<td align="left">
+													<a class="purple" href="/room/<%= rooms[i].id %>"><%= rooms[i].name %></a>
+												</td>
+												<td align="center">
+													<% if(rooms[i].password) { %>
+														<i class="fas fa-lock mr-2"></i>
+													<% } else { %>
+														<i class="fas fa-unlock mr-2"></i>
+													<% } %>
+												</td>
+												<td align="center">
+													<span class="badge badge-primary badge-pill"><%= rooms[i].getNumberOfPlayers(); %> </span>
+												</td>
+											</td>
+										<% } %>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<%- include('partials/footer'); %>
+		
+		<script type="text/javascript" src="/js/rooms.js"></script>
+	</body>
+</html>

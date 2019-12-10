@@ -1,0 +1,32 @@
+{
+	"name": "fruit-game",
+	"version": "1.0.0",
+	"description": "The fruit game",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"engines": {
+		"node": ">=8.9.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/thiagodnf/fruit-game.git"
+	},
+	"author": "Thiago Ferreira",
+	"license": "MIT",
+	"homepage": "https://thiagodnf.github.io/fruit-game",
+	"dependencies": {
+		"express": "4.15.2",
+		"livereload": "0.8.2",
+		"winston": "3.2.1",
+		"socket.io": "2.2.0",
+		"ejs": "3.0.1",
+		"body-parser": "1.19.0",
+		"express-validator": "6.3.0",
+		"express-flash": "0.0.2",
+		"express-session": "1.17.0",
+		"express-partials": "0.3.0",
+		"cookie-parser": "1.4.4"
+	}
+}

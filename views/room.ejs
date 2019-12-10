@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include('partials/head'); %>
+    </head>
+	<body>
+	
+		<%- include('partials/navbar', {active: 'rooms'}); %>
+
+		<div class="container-fluid">
+			<div class="card mt-4 room">
+				<div class="card-header">
+					<a href="/rooms"><i class="fas fa-arrow-left"></i> </a>
+					<span class="ml-2 font-weight-bold"><%= room.name %></span>
+				</div>
+				<div class="card-body" >
+					<div class="col-sm-12 ml-0 pl-0">
+						<canvas id="game-canvas"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<img id="wall" class="d-none" src="/images/tile/wall.png" />
+		<img id="apple" class="d-none" src="/images/tile/apple.png" />
+
+		<%- include('partials/modal-join'); %>
+		<%- include('partials/footer'); %>
+		
+		<script type="text/javascript" src="/js/room.js"></script>
+
+	</body>
+</html>

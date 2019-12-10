@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<%- include('partials/head'); %>
+    </head>
+	<body>
+
+		<%- include('partials/navbar', {active: 'home'}); %>
+		
+		<div class="container-fluid">
+			<div class="row mt-4">
+				<div class="col-4"></div>
+				<div class="col-sm-4">
+					<div class="card">
+						<div class="card-header font-weight-bold">Rooms</div>
+						<div class="card-body">
+							<form action="#">
+								<div class="form-group">
+									<input type="search" class="form-control" id="search-bar" placeholder="Search a room" spellcheck="false">
+								</div>
+							</form>
+							<div class="overflow-auto rooms">
+								<ul class="list-group">
+									<% for(var i in rooms) { %>
+										<li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action" data-room-id='<%= rooms[i].id %>'>
+											<span>
+												<span>
+													<% if(rooms[i].password) { %>
+														<i class="fas fa-lock mr-2"></i>
+													<% } else { %>
+														<i class="fas fa-lock mr-2 transparent"></i>
+													<% } %>
+												</span>
+												<span class="room-name"><%= rooms[i].name %></span>
+											</span>
+											<span class="badge badge-primary badge-pill"><%= rooms[i].getNumberOfPlayers(); %> </span>
+										</li>
+									<% } %>
+								</ul>
+							</div>
+							<br/>
+							<a href="#" class="btn btn-outline-secondary btn-new-room">New Room</a>
+							<a href="#" class="btn btn-success float-right btn-play-now">Play Now</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-4"></div>
+			</div>
+		</div>
+
+		<%- include('partials/footer'); %>
+	</body>
+</html>

@@ -1,0 +1,159 @@
+body{
+    background-color: #edeff0;
+    color: #576366;
+    font-family: Montserrat,Helvetica Neue,helvetica,arial,sans-serif;
+}
+
+.navbar-brand {
+    font-family: 'Patrick Hand', cursive;
+}
+
+/*
+ * Navbar
+ */
+
+.navbar-custom {
+    background-color: #46178f;
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand, .navbar-custom .navbar-text {
+    color: white; 
+}
+
+.navbar-toggler {
+    border-color: #9ea3a7 !important; 
+}
+
+.navbar-toggler-icon {
+    color: #edeff0 !important; 
+}
+
+.navbar-custom .navbar-brand:hover {
+    color: #fff; 
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: #cbbde2 !important; 
+}
+
+.navbar-custom .navbar-nav .nav-link:hover {
+    color: white !important; 
+}
+
+.navbar-custom .navbar-nav .active .nav-link{
+    color: white !important;
+}
+
+/*
+ * List Group
+ */
+
+.list-group:hover {
+    cursor: pointer;
+}
+
+.list-group-item {
+    border-left-color: transparent;
+    border-right-color: transparent;
+}
+
+.list-group-item:first-child {
+    border-top-color: transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.list-group-item:last-child {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.list-group-item.active{
+    background-color: rgba(70,23,143,.12);
+    border-bottom-color: rgba(70,23,143,.12);
+    border-top-color: rgba(70,23,143,.12);
+    border-left-color: transparent;
+    border-right-color: transparent;
+    color: #46178f; 
+}
+
+/*
+ * Buttons
+ */
+
+.btn-success {
+    background-color: #4e953b;
+    border-color: #4e953b; 
+}
+
+.btn-success:hover {
+    border-color: #1e6e09   !important;
+    background-color:#1e6e09 !important; 
+}
+
+.btn-success:active {
+    border-color: #2e9a4e !important;
+    background-color: #1e6e0a !important; 
+}
+
+.btn-primary {
+    background-color: #45a3e5 !important;
+    border-color: #45a3e5 !important; 
+}
+
+.btn-primary:hover {
+    border-color: #326e99 !important;
+    background-color: #326e99 !important; 
+}
+
+.btn-primary:active {
+    border-color: #2c6085 !important;
+    background-color: #2c6085 !important; 
+}
+
+.btn-outline-secondary {
+    color: #55616c;
+    background-color: transparent !important;
+    border: 1px solid rgba(48, 73, 97, 0.3) !important; 
+}
+.btn-outline-secondary:hover {
+      border-color: #7b8b8e !important;
+      color: #576366 !important; 
+}
+
+.badge-primary{
+    background-color: #eb6710;
+}
+
+.purple{ 
+    color: #46178f !important;
+}
+
+/* #game-canvas{
+    border: 1px solid black;
+} */
+
+.bg-danger{
+    background-color: #f45b5b !important;
+}
+
+.card{
+    border-radius: 4px;
+    box-shadow: #00000026 0px 0px 8px 0px;
+}
+
+.toast-wrapper{
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    top: auto;
+    margin-bottom: 15px !important;
+    margin-left: 15px !important;
+}
+
+.room .card-body{
+    padding: 0;
+    margin: 0;
+}
