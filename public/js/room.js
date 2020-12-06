@@ -3,7 +3,7 @@ let gameCanvas;
 let gameContext;
 let socket;
 let playerName;
-let showGrid = true;
+let showGrid = false;
 
 let game = null;
 let player = null;
