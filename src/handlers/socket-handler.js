@@ -21,11 +21,11 @@ class SocketHandler {
 
         let socketId = socket.id;
 
-        console.log("SocketId Connected:", socketId);
+        console.log('SocketId Connected:', socketId);
 
         socket.on('disconnect', () => {
 
-            console.log("SocketId Disconnected", socketId);
+            console.log('SocketId Disconnected', socketId);
 
             const conn = that.socketConnections[socketId];
 
@@ -43,19 +43,19 @@ class SocketHandler {
 
         socket.on('start-game', (roomId) => {
 
-            this.roomsHandler.on(roomId, "new-fruit", (response) => {
+            this.roomsHandler.on(roomId, 'new-fruit', (response) => {
                 that.io.sockets.in(roomId).emit('game-update', response);
             });
 
-            this.roomsHandler.on(roomId, "countdown-change", (response) => {
+            this.roomsHandler.on(roomId, 'countdown-change', (response) => {
                 that.io.sockets.in(roomId).emit('countdown-change', response);
             });
 
-            this.roomsHandler.on(roomId, "end-game", (response) => {
+            this.roomsHandler.on(roomId, 'end-game', (response) => {
                 that.io.sockets.in(roomId).emit('end-game', response);
             });
 
-            this.roomsHandler.on(roomId, "eaten-fruit-update", (response) => {
+            this.roomsHandler.on(roomId, 'eaten-fruit-update', (response) => {
                 that.io.sockets.in(roomId).emit('eaten-fruit-update', response);
             });
 
@@ -90,7 +90,7 @@ class SocketHandler {
                 socket.emit('player-update', response);
                 that.io.sockets.in(roomId).emit('game-update', response);
             }).catch(error => {
-                console.error(error)
+                console.error(error);
                 socket.emit('room-error', error);
             });
         });

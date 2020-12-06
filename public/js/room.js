@@ -29,7 +29,7 @@ function renderGame() {
 
     if (showGrid) {
 
-        gameContext.strokeStyle = 'gray'
+        gameContext.strokeStyle = 'gray';
 
         for (let i = 0; i <= game.lines; i++) {
             gameContext.beginPath();
@@ -89,7 +89,7 @@ function handleKeys(roomId, keyPressed) {
         return;
     }
 
-    socket.emit('player-move', roomId, player.id, keyPressed)
+    socket.emit('player-move', roomId, player.id, keyPressed);
 }
 
 function join(roomId, playerName) {
@@ -112,7 +112,7 @@ function join(roomId, playerName) {
 
     socket.on('room-error', (reason) => {
 
-        console.log('Receiving a room error', reason)
+        console.log('Receiving a room error', reason);
     });
 
     socket.on('player-joined', (response) => {
@@ -127,7 +127,7 @@ function join(roomId, playerName) {
 
     socket.on('eaten-fruit-update', (response) => {
 
-        console.log(response)
+        console.log(response);
 
         if (response.player.id == player.id) {
 
@@ -143,7 +143,7 @@ function join(roomId, playerName) {
 
     socket.on('game-update', (response) => {
 
-        console.log('Receiving game-update')
+        console.log('Receiving game-update');
 
         game = response.game;
 
@@ -158,7 +158,7 @@ function join(roomId, playerName) {
 
     socket.on('player-update', (response) => {
 
-        console.log('Receiving player-update')
+        console.log('Receiving player-update');
 
         player = response.player;
     });
@@ -183,7 +183,7 @@ function join(roomId, playerName) {
 
         game = response.game;
 
-        console.log('Receiving the end game')
+        console.log('Receiving the end game');
 
         $btnStart.prop('disabled', false);
 
@@ -203,9 +203,9 @@ function join(roomId, playerName) {
             thirdStep = response.ranking[2].name;
         }
 
-        $winnersModal.find(".first-step-name")[0].textContent = firstStep || "";
-        $winnersModal.find(".second-step-name")[0].textContent = secondStep || "";
-        $winnersModal.find(".third-step-name")[0].textContent = thirdStep || "";
+        $winnersModal.find('.first-step-name')[0].textContent = firstStep || '';
+        $winnersModal.find('.second-step-name')[0].textContent = secondStep || '';
+        $winnersModal.find('.third-step-name')[0].textContent = thirdStep || '';
 
         $winnersModal.modal('show');
 
@@ -246,7 +246,7 @@ function start() {
 
 $(function () {
 
-    console.log("RoomId:", roomId);
+    console.log('RoomId:', roomId);
 
     gameCanvas = document.getElementById('canvas');
     gameContext = gameCanvas.getContext('2d');
@@ -267,22 +267,22 @@ $(function () {
         src: ['/audio/end-game.wav']
     });
 
-    $ranking = $("#ranking");
-    $countDown = $("#count-down");
-    $btnStart = $("#btn-start");
-    $winnersModal = $("#winners-modal");
+    $ranking = $('#ranking');
+    $countDown = $('#count-down');
+    $btnStart = $('#btn-start');
+    $winnersModal = $('#winners-modal');
 
     $(document).keyup(function (event) {
-        handleKeys(roomId, event.which)
+        handleKeys(roomId, event.which);
     });
 
-    $("#form-new-player").submit(function (event) {
+    $('#form-new-player').submit(function (event) {
 
         event.preventDefault();
 
         if ($(this).valid()) {
 
-            var playerName = $(this).find("#playerName").val().trim();
+            var playerName = $(this).find('#playerName').val().trim();
 
             join(roomId, playerName);
         }
@@ -292,9 +292,9 @@ $(function () {
 
     $btnStart.hide();
 
-    $btnStart.on("click", function () {
+    $btnStart.on('click', function () {
         start();
-    })
+    });
 
     requestAnimationFrame(renderGame);
 

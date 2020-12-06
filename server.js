@@ -39,7 +39,7 @@ routes.get('/rooms/:roomId', (req, res) => {
     const room = roomsHandler.getRoomById(roomId);
 
     if (!room) {
-        res.redirect(`/`);
+        res.redirect('/');
     }
 
     res.render('room.ejs', {
@@ -59,13 +59,13 @@ routes.post('/rooms/create', function (req, res) {
 
 app.use('/', routes);
 
-app.use("*", function (req, res) {
+app.use('*', function (req, res) {
     res.send('Page not found');
 });
 
 http.listen(PORT, () => {
 
-    console.log("Running on port:", PORT);
+    console.log('Running on port:', PORT);
 
     io.on('connection', (socket) => {
         socketHandler.connect(socket);

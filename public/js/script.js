@@ -5,7 +5,7 @@ $(function () {
         $(this).find('[autofocus]').focus();
     });
 
-    $("#form-new-player").validate({
+    $('#form-new-player').validate({
         errorElement: 'small',
         errorClass: 'error text-danger text-small',
         rules: {
@@ -23,7 +23,7 @@ $(function () {
         }
     });
 
-    $("#form-new-room").validate({
+    $('#form-new-room').validate({
         errorElement: 'small',
         errorClass: 'error text-danger text-small',
         rules: {
@@ -35,4 +35,4 @@ $(function () {
             }
         }
     });
-})
+});
