@@ -1,0 +1,77 @@
+body {
+    margin-top: 80px;
+    background-color: #edeff0;
+    color: #576366;
+}
+
+canvas{
+    border: 1px solid gray;
+}
+
+.podium{
+    height: 120px;
+}
+
+.step-container {
+    position: absolute;
+    bottom: 0px;
+    width: 80%;
+}
+
+.first-step{
+    background-color: #00A3A8;
+    height: 90px;
+}
+
+.second-step{
+    background-color: #AEAA00;
+    height: 60px;
+}
+
+.third-step{
+    background-color: #FD3E17;
+    height: 30px;
+}
+
+
+/*
+ * Navbar
+ */
+
+ .navbar-custom {
+    background-color: #46178f;
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand, .navbar-custom .navbar-text {
+    color: white;
+}
+
+.navbar-toggler {
+    border-color: #9ea3a7 !important;
+}
+
+.navbar-toggler-icon {
+    color: #edeff0 !important;
+}
+
+.navbar-custom .navbar-brand:hover {
+    color: #fff;
+}
+
+.navbar-custom .navbar-nav .nav-link {
+    color: #cbbde2 !important;
+}
+
+.navbar-custom .navbar-nav .nav-link:hover {
+    color: white !important;
+}
+
+.navbar-custom .navbar-nav .active .nav-link{
+    color: white !important;
+}
+
+.card{
+    border-radius: 4px;
+    box-shadow: #00000026 0px 0px 8px 0px;
+}

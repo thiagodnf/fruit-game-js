@@ -1,53 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-		<%- include('partials/head'); %>
-    </head>
-	<body>
 
-		<%- include('partials/navbar', {active: 'home'}); %>
-		
-		<div class="container-fluid">
-			<div class="row mt-4">
-				<div class="col-4"></div>
-				<div class="col-sm-4">
-					<div class="card">
-						<div class="card-header font-weight-bold">Rooms</div>
-						<div class="card-body">
-							<form action="#">
-								<div class="form-group">
-									<input type="search" class="form-control" id="search-bar" placeholder="Search a room" spellcheck="false">
-								</div>
-							</form>
-							<div class="overflow-auto rooms">
-								<ul class="list-group">
-									<% for(var i in rooms) { %>
-										<li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action" data-room-id='<%= rooms[i].id %>'>
-											<span>
-												<span>
-													<% if(rooms[i].password) { %>
-														<i class="fas fa-lock mr-2"></i>
-													<% } else { %>
-														<i class="fas fa-lock mr-2 transparent"></i>
-													<% } %>
-												</span>
-												<span class="room-name"><%= rooms[i].name %></span>
-											</span>
-											<span class="badge badge-primary badge-pill"><%= rooms[i].getNumberOfPlayers(); %> </span>
-										</li>
-									<% } %>
-								</ul>
-							</div>
-							<br/>
-							<a href="#" class="btn btn-outline-secondary btn-new-room">New Room</a>
-							<a href="#" class="btn btn-success float-right btn-play-now">Play Now</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-4"></div>
-			</div>
-		</div>
+<head>
+    <%- include('includes/head', {roomName: ""}); %>
+</head>
 
-		<%- include('partials/footer'); %>
-	</body>
+<body>
+    <%- include('includes/navbar'); %>
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header ">
+                <div class="row">
+                    <div class="col mt-1 font-weight-bold">Rooms</div>
+                    <div class="col-auto">
+                        <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#newRoomModal">New Room</a>
+                    </div>
+                </div>
+            </div>
+            <div class="list-group list-group-flush">
+                <% rooms.forEach(function(room){ %>
+                    <a href="rooms/<%= room.id %>" class="list-group-item list-group-item-action">
+                        <div class="row">
+                            <div class="col"><%= room.name %></div>
+                            <div class="col-auto">
+                                <span class="badge badge-primary badge-pill text-right"><%= Object.keys(room.game.players).length  %></span>
+                            </div>
+                        </div>
+                    </a>
+                <% }); %>
+                <% if (rooms.length == 0) { %>
+                    <li class="list-group-item">No Rooms</li>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal" id="newRoomModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="form-new-room" method="POST" action="/rooms/create" autocomplete="off" autocorrect="off">
+                    <div class="modal-header">
+                        <h5 class="modal-title">New Room</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="roomName">Name</label>
+                            <input type="search" class="form-control" name="roomName" id="roomName"  autocomplete="off" autocorrect="off" autofocus required >
+                        </div>
+                        <div class="form-group">
+                            <label for="roomTime">Time</label>
+                            <select class="form-control" class="form-control" name="roomTime" id="roomTime"  autocomplete="off" autocorrect="off">
+                                <option value="30">30 Seconds</option>
+                                <option value="60" selected>60 Seconds</option>
+                                <option value="120">120 Seconds</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <%- include('includes/footer'); %>
+</body>
+
 </html>
