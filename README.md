@@ -18,9 +18,9 @@ Please access the following link:
 
 Create a new room and set the timer for the game. For now, the available options are:
 
-    - 30 seconds
-    - 60 seconds
-    - 120 seconds
+ - 30 seconds
+ - 60 seconds
+- 120 seconds
 
 To move the character, please use the arrows key from your keyboard. Win the game who reaches the higher number of points.
 
