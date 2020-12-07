@@ -1,6 +1,6 @@
 
 
-<img src="https://user-images.githubusercontent.com/114015/101380902-1ab77000-3884-11eb-8a61-66a00672bc3f.png"/>
+<img src="https://user-images.githubusercontent.com/114015/101380902-1ab77000-3884-11eb-8a61-66a00672bc3f.png" width="400px"/>
 
 A Multiplayer Fruit Game in Javascript
 
