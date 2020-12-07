@@ -16,7 +16,7 @@
                             <div class="col mt-1 font-weight-bold"><%= room.name %></div>
                             <div class="col-auto">
                                 <span id="count-down" class="mr-2"> 00:00:00</span>
-                                <button type="button" class="btn btn-success btn-sm" id= "btn-start">Start</button>
+                                <button type="button" class="btn btn-success btn-sm" id="btn-start">Start</button>
                                 <a class="btn btn-sm btn-danger" href="/">Leave</a>
                             </div>
                         </div>
@@ -48,7 +48,8 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="userName">Name</label>
-                            <input type="search" class="form-control" name="playerName" id="playerName" autocomplete="off" autocorrect="off" autofocus required>
+                            <input type="search" class="form-control" name="playerName" id="playerName"
+                                autocomplete="off" autocorrect="off" autofocus required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -93,6 +94,11 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div style="display: none;">
+        <img id="apple" src="/images/sprites/apple.png" width="140" height="140"/>
+        <img id="banana" src="/images/sprites/banana.png" width="140" height="140"/>
+        <img id="grape" src="/images/sprites/grape.png" width="140" height="140"/>
     </div>
     <%- include('includes/footer'); %>
     <script type="text/javascript">

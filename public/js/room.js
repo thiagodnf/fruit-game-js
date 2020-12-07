@@ -18,6 +18,10 @@ let audioFruitThree = null;
 let audioFruitFive = null;
 let audioEndGame = null;
 
+let imageBanana = null;
+let imageApple = null;
+let imageGrape = null;
+
 function renderGame() {
 
     if (!game) {
@@ -26,6 +30,11 @@ function renderGame() {
     }
 
     gameContext.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+
+    gameContext.fillStyle = '#5DC800';
+    gameContext.fillRect(0, 0, canvas.width, canvas.height);
+
+
 
     if (showGrid) {
 
@@ -46,7 +55,7 @@ function renderGame() {
         }
     }
 
-    gameContext.fillStyle = 'LightGray';
+    gameContext.fillStyle = 'Chartreuse';
 
     for (var playerId in game.players) {
 
@@ -60,18 +69,22 @@ function renderGame() {
 
     game.fruits.forEach((fruit) => {
 
+        let image = imageBanana;
+
         if (fruit.points === 1) {
-            gameContext.fillStyle = 'yellow';
+            image = imageBanana;
         } else if (fruit.points === 3) {
-            gameContext.fillStyle = 'red';
+            image = imageApple;
         } else if (fruit.points === 5) {
-            gameContext.fillStyle = 'purple';
+            image = imageGrape;
         } else {
-            gameContext.fillStyle = 'yellow';
+            image = imageBanana;
         }
 
-        gameContext.fillRect(fruit.x * game.size, fruit.y * game.size, game.size, game.size);
+        gameContext.drawImage(image, fruit.x * game.size, fruit.y * game.size, game.size, game.size);
     });
+
+
 
     if (player) {
         gameContext.fillStyle = '#000000';
@@ -113,6 +126,15 @@ function join(roomId, playerName) {
     socket.on('room-error', (reason) => {
 
         console.log('Receiving a room error', reason);
+
+        bootbox.alert({
+            title: 'Oops...',
+            message: reason,
+            animate:  false,
+            callback : function(){
+                window.location.href = '/';
+            }
+        });
     });
 
     socket.on('player-joined', (response) => {
@@ -143,8 +165,6 @@ function join(roomId, playerName) {
 
     socket.on('game-update', (response) => {
 
-        console.log('Receiving game-update');
-
         game = response.game;
 
         if (game.adminId == player.id) {
@@ -157,8 +177,6 @@ function join(roomId, playerName) {
     });
 
     socket.on('player-update', (response) => {
-
-        console.log('Receiving player-update');
 
         player = response.player;
     });
@@ -182,8 +200,6 @@ function join(roomId, playerName) {
     socket.on('end-game', (response) => {
 
         game = response.game;
-
-        console.log('Receiving the end game');
 
         $btnStart.prop('disabled', false);
 
@@ -271,6 +287,10 @@ $(function () {
     $countDown = $('#count-down');
     $btnStart = $('#btn-start');
     $winnersModal = $('#winners-modal');
+
+    imageBanana = document.getElementById('banana');
+    imageApple = document.getElementById('apple');
+    imageGrape = document.getElementById('grape');
 
     $(document).keyup(function (event) {
         handleKeys(roomId, event.which);
