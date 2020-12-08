@@ -58,7 +58,7 @@ class RoomModel {
 
     stopFruits() {
 
-        logger.info("Stopping fruits for the room %s", this.id);
+        logger.info('Stopping fruits for the room %s', this.id);
 
         if (this.fruitsCron) {
             this.fruitsCron.stop();
@@ -72,7 +72,7 @@ class RoomModel {
 
         this.game.isRunning = false;
 
-        logger.info("The room %s was successfully deleted", this.id);
+        logger.info('The room %s was successfully deleted', this.id);
     }
 
     reset() {
