@@ -123,7 +123,10 @@ class RoomsHandler {
                     room.leave(player);
 
                     if (room.isEmpty()) {
+
                         delete that.rooms[roomId];
+
+                        room.delete();
                     }
 
                     resolve({

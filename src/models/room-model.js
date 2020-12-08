@@ -2,6 +2,7 @@ const uuid = require('uuid');
 const cron = require('node-cron');
 const EventEmitter = require('events');
 const RandomUtils = require('../utils/random-utils');
+const logger = require('../utils/logger-utils');
 
 class RoomModel {
 
@@ -57,9 +58,21 @@ class RoomModel {
 
     stopFruits() {
 
+        logger.info("Stopping fruits for the room %s", this.id);
+
         if (this.fruitsCron) {
             this.fruitsCron.stop();
         }
+    }
+
+    /**
+     * This function is called when a given room is deleted
+     */
+    delete(){
+
+        this.game.isRunning = false;
+
+        logger.info("The room %s was successfully deleted", this.id);
     }
 
     reset() {
@@ -97,7 +110,7 @@ class RoomModel {
 
         const interval = setInterval(() => {
 
-            if (remainingSeconds == 0) {
+            if (remainingSeconds == 0 || !that.game.isRunning) {
 
                 that.game.isRunning = false;
 

@@ -5,6 +5,7 @@ const socket = require('socket.io');
 
 const RoomsHandler = require('./src/handlers/rooms-handler.js');
 const SocketHandler = require('./src/handlers/socket-handler.js');
+const logger = require('./src/utils/logger-utils');
 
 const PORT = process.env.PORT || 3000;
 
@@ -65,7 +66,7 @@ app.use('*', function (req, res) {
 
 http.listen(PORT, () => {
 
-    console.log('Running on port:', PORT);
+    logger.info('Running on port: %d', PORT);
 
     io.on('connection', (socket) => {
         socketHandler.connect(socket);
