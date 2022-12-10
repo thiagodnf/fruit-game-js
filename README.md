@@ -33,7 +33,7 @@ Every second, a new fruit comes up on the board. Each fruit has a number of poin
 ## Screenshot
 
 <kbd>
-    <img src="https://user-images.githubusercontent.com/114015/101381446-c19c0c00-3884-11eb-86f7-64681961d6f4.png"/>
+    <img class="screenshot" src="https://user-images.githubusercontent.com/114015/101381446-c19c0c00-3884-11eb-86f7-64681961d6f4.png"/>
 </kbd>
 
 ## For Developers
