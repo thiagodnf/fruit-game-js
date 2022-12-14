@@ -31,14 +31,14 @@ function renderGame() {
 
     gameContext.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
 
-    gameContext.fillStyle = '#5DC800';
+    gameContext.fillStyle = "#5DC800";
     gameContext.fillRect(0, 0, canvas.width, canvas.height);
 
 
 
     if (showGrid) {
 
-        gameContext.strokeStyle = 'gray';
+        gameContext.strokeStyle = "gray";
 
         for (let i = 0; i <= game.lines; i++) {
             gameContext.beginPath();
@@ -55,7 +55,7 @@ function renderGame() {
         }
     }
 
-    gameContext.fillStyle = 'Chartreuse';
+    gameContext.fillStyle = "Chartreuse";
 
     for (var playerId in game.players) {
 
@@ -87,7 +87,7 @@ function renderGame() {
 
 
     if (player) {
-        gameContext.fillStyle = '#000000';
+        gameContext.fillStyle = "#000000";
         gameContext.fillRect(player.x * game.size, player.y * game.size, game.size, game.size);
     }
 
@@ -102,7 +102,7 @@ function handleKeys(roomId, keyPressed) {
         return;
     }
 
-    socket.emit('player-move', roomId, player.id, keyPressed);
+    socket.emit("player-move", roomId, player.id, keyPressed);
 }
 
 function join(roomId, playerName) {
@@ -111,43 +111,43 @@ function join(roomId, playerName) {
         socket = io();
     }
 
-    socket.on('connect', () => {
+    socket.on("connect", () => {
 
-        console.log('Connected with Socket Id:', socket.id);
+        console.log("Connected with Socket Id:", socket.id);
 
-        socket.emit('join-game', roomId, playerName);
+        socket.emit("join-game", roomId, playerName);
     });
 
-    socket.on('disconnect', () => {
+    socket.on("disconnect", () => {
 
-        console.log('Disconnected');
+        console.log("Disconnected");
     });
 
-    socket.on('room-error', (reason) => {
+    socket.on("room-error", (reason) => {
 
-        console.log('Receiving a room error', reason);
+        console.log("Receiving a room error", reason);
 
         bootbox.alert({
-            title: 'Oops...',
+            title: "Oops...",
             message: reason,
             animate:  false,
             callback : function(){
-                window.location.href = '/';
+                window.location.href = "/";
             }
         });
     });
 
-    socket.on('player-joined', (response) => {
+    socket.on("player-joined", (response) => {
 
-        console.log('Player Joined:', response.player);
+        console.log("Player Joined:", response.player);
 
         game = response.game;
         player = response.player;
 
-        $('#newPlayerModal').modal('hide');
+        $("#newPlayerModal").modal("hide");
     });
 
-    socket.on('eaten-fruit-update', (response) => {
+    socket.on("eaten-fruit-update", (response) => {
 
         console.log(response);
 
@@ -163,7 +163,7 @@ function join(roomId, playerName) {
         }
     });
 
-    socket.on('game-update', (response) => {
+    socket.on("game-update", (response) => {
 
         game = response.game;
 
@@ -176,12 +176,12 @@ function join(roomId, playerName) {
         updateRanking();
     });
 
-    socket.on('player-update', (response) => {
+    socket.on("player-update", (response) => {
 
         player = response.player;
     });
 
-    socket.on('countdown-change', (response) => {
+    socket.on("countdown-change", (response) => {
 
         const remainingSeconds = response.remainingSeconds;
 
@@ -190,18 +190,18 @@ function join(roomId, playerName) {
         const minutes = date.getUTCMinutes();
         const seconds = date.getSeconds();
 
-        const timeString = hours.toString().padStart(2, '0') + ':' +
-            minutes.toString().padStart(2, '0') + ':' +
-            seconds.toString().padStart(2, '0');
+        const timeString = hours.toString().padStart(2, "0") + ":" +
+            minutes.toString().padStart(2, "0") + ":" +
+            seconds.toString().padStart(2, "0");
 
         $countDown.text(timeString);
     });
 
-    socket.on('end-game', (response) => {
+    socket.on("end-game", (response) => {
 
         game = response.game;
 
-        $btnStart.prop('disabled', false);
+        $btnStart.prop("disabled", false);
 
         let firstStep;
         let secondStep;
@@ -219,11 +219,11 @@ function join(roomId, playerName) {
             thirdStep = response.ranking[2].name;
         }
 
-        $winnersModal.find('.first-step-name')[0].textContent = firstStep || '';
-        $winnersModal.find('.second-step-name')[0].textContent = secondStep || '';
-        $winnersModal.find('.third-step-name')[0].textContent = thirdStep || '';
+        $winnersModal.find(".first-step-name")[0].textContent = firstStep || "";
+        $winnersModal.find(".second-step-name")[0].textContent = secondStep || "";
+        $winnersModal.find(".third-step-name")[0].textContent = thirdStep || "";
 
-        $winnersModal.modal('show');
+        $winnersModal.modal("show");
 
         audioEndGame.play();
     });
@@ -245,7 +245,7 @@ function updateRanking() {
 
         $ranking.append(`
             <li class="list-group-item d-flex justify-content-between align-items-center pt-1 pb-1">
-                <span class="${p.id === player.id ? 'font-weight-bold' : ''}">
+                <span class="${p.id === player.id ? "font-weight-bold" : ""}">
                     #${i + 1} ${p.name}
                 </span>
                 <span class="badge badge-primary badge-pill">${p.score}</span>
@@ -255,54 +255,54 @@ function updateRanking() {
 }
 
 function start() {
-    socket.emit('start-game', roomId);
+    socket.emit("start-game", roomId);
 
-    $btnStart.prop('disabled', true);
+    $btnStart.prop("disabled", true);
 }
 
 $(function () {
 
-    console.log('RoomId:', roomId);
+    console.log("RoomId:", roomId);
 
-    gameCanvas = document.getElementById('canvas');
-    gameContext = gameCanvas.getContext('2d');
+    gameCanvas = document.getElementById("canvas");
+    gameContext = gameCanvas.getContext("2d");
 
     audioFruitOne = new Howl({
-        src: ['/audio/fruit-1.wav']
+        src: ["/audio/fruit-1.wav"]
     });
 
     audioFruitThree = new Howl({
-        src: ['/audio/fruit-3.wav']
+        src: ["/audio/fruit-3.wav"]
     });
 
     audioFruitFive = new Howl({
-        src: ['/audio/fruit-5.wav']
+        src: ["/audio/fruit-5.wav"]
     });
 
     audioEndGame = new Howl({
-        src: ['/audio/end-game.wav']
+        src: ["/audio/end-game.wav"]
     });
 
-    $ranking = $('#ranking');
-    $countDown = $('#count-down');
-    $btnStart = $('#btn-start');
-    $winnersModal = $('#winners-modal');
+    $ranking = $("#ranking");
+    $countDown = $("#count-down");
+    $btnStart = $("#btn-start");
+    $winnersModal = $("#winners-modal");
 
-    imageBanana = document.getElementById('banana');
-    imageApple = document.getElementById('apple');
-    imageGrape = document.getElementById('grape');
+    imageBanana = document.getElementById("banana");
+    imageApple = document.getElementById("apple");
+    imageGrape = document.getElementById("grape");
 
     $(document).keyup(function (event) {
         handleKeys(roomId, event.which);
     });
 
-    $('#form-new-player').submit(function (event) {
+    $("#form-new-player").submit(function (event) {
 
         event.preventDefault();
 
         if ($(this).valid()) {
 
-            var playerName = $(this).find('#playerName').val().trim();
+            var playerName = $(this).find("#playerName").val().trim();
 
             join(roomId, playerName);
         }
@@ -312,11 +312,11 @@ $(function () {
 
     $btnStart.hide();
 
-    $btnStart.on('click', function () {
+    $btnStart.on("click", function () {
         start();
     });
 
     requestAnimationFrame(renderGame);
 
-    $('#newPlayerModal').modal('show');
+    $("#newPlayerModal").modal("show");
 });

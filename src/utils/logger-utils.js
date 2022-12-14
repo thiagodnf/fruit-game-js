@@ -1,4 +1,4 @@
-const { createLogger, format, transports } = require('winston');
+const { createLogger, format, transports } = require("winston");
 
 class LoggerUtils {
 
@@ -19,15 +19,15 @@ class LoggerUtils {
     }
 
     info(message, ...parameters) {
-        this.logger.log('info', message, ...parameters);
+        this.logger.log("info", message, ...parameters);
     }
 
     debug(message, ...parameters) {
-        this.logger.log('debug', message, ...parameters);
+        this.logger.log("debug", message, ...parameters);
     }
 
     error(message, ...parameters) {
-        this.logger.log('error', message, ...parameters);
+        this.logger.log("error", message, ...parameters);
     }
 }
 

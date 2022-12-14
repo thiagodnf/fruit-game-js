@@ -1,13 +1,13 @@
 $(function () {
 
     // Every time a modal is shown, if it has an autofocus element, focus on it.
-    $('.modal').on('shown.bs.modal', function() {
-        $(this).find('[autofocus]').focus();
+    $(".modal").on("shown.bs.modal", function() {
+        $(this).find("[autofocus]").focus();
     });
 
-    $('#form-new-player').validate({
-        errorElement: 'small',
-        errorClass: 'error text-danger text-small',
+    $("#form-new-player").validate({
+        errorElement: "small",
+        errorClass: "error text-danger text-small",
         rules: {
             playerName: {
                 required: true,
@@ -23,9 +23,9 @@ $(function () {
         }
     });
 
-    $('#form-new-room').validate({
-        errorElement: 'small',
-        errorClass: 'error text-danger text-small',
+    $("#form-new-room").validate({
+        errorElement: "small",
+        errorClass: "error text-danger text-small",
         rules: {
             roomName: {
                 required: true,

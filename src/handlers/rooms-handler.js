@@ -1,5 +1,5 @@
-const Room = require('../models/room-model');
-const Player = require('../models/player-model');
+const Room = require("../models/room-model");
+const Player = require("../models/player-model");
 
 class RoomsHandler {
 
@@ -47,7 +47,7 @@ class RoomsHandler {
                 });
 
             } else {
-                reject('The room does not exists');
+                reject("The room does not exists");
             }
         });
     }
@@ -70,7 +70,7 @@ class RoomsHandler {
                 });
 
             } else {
-                reject('The room does not exists');
+                reject("The room does not exists");
             }
         });
     }
@@ -98,10 +98,10 @@ class RoomsHandler {
                     });
 
                 } else {
-                    reject('The player id was not found');
+                    reject("The player id was not found");
                 }
             } else {
-                reject('The room does not exists');
+                reject("The room does not exists");
             }
         });
     }
@@ -136,10 +136,10 @@ class RoomsHandler {
                     });
 
                 } else {
-                    reject('The player id was not found');
+                    reject("The player id was not found");
                 }
             } else {
-                reject('The room does not exists');
+                reject("The room does not exists");
             }
         });
     }

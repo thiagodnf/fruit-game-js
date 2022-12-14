@@ -1,8 +1,8 @@
-const uuid = require('uuid');
-const cron = require('node-cron');
-const EventEmitter = require('events');
-const RandomUtils = require('../utils/random-utils');
-const logger = require('../utils/logger-utils');
+const uuid = require("uuid");
+const cron = require("node-cron");
+const EventEmitter = require("events");
+const RandomUtils = require("../utils/random-utils");
+const logger = require("../utils/logger-utils");
 
 class RoomModel {
 
@@ -49,7 +49,7 @@ class RoomModel {
                 points: points
             });
 
-            that.events.emit('new-fruit', {
+            that.events.emit("new-fruit", {
                 roomId: that.id,
                 game: that.game
             });
@@ -58,7 +58,7 @@ class RoomModel {
 
     stopFruits() {
 
-        logger.info('Stopping fruits for the room %s', this.id);
+        logger.info("Stopping fruits for the room %s", this.id);
 
         if (this.fruitsCron) {
             this.fruitsCron.stop();
@@ -72,7 +72,7 @@ class RoomModel {
 
         this.game.isRunning = false;
 
-        logger.info('The room %s was successfully deleted', this.id);
+        logger.info("The room %s was successfully deleted", this.id);
     }
 
     reset() {
@@ -120,14 +120,14 @@ class RoomModel {
 
                 that.game.fruits = [];
 
-                that.events.emit('end-game', {
+                that.events.emit("end-game", {
                     roomId: that.id,
                     game: that.game,
                     ranking: that.getRanking()
                 });
             }
 
-            that.events.emit('countdown-change', {
+            that.events.emit("countdown-change", {
                 roomId: that.id,
                 game: that.game,
                 remainingSeconds: remainingSeconds
@@ -215,7 +215,7 @@ class RoomModel {
 
                 that.game.fruits.splice(i, 1);
 
-                that.events.emit('eaten-fruit-update', {
+                that.events.emit("eaten-fruit-update", {
                     roomId: that.id,
                     game: that.game,
                     player: player,
