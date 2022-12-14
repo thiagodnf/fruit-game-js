@@ -1,4 +1,12 @@
+
+function resizeWindow() {
+
+    $(".card").height($(window).height() - $(".card").offset().top -20)
+}
+
 $(function () {
+
+    $(window).resize(resizeWindow).trigger("resize");
 
     // Every time a modal is shown, if it has an autofocus element, focus on it.
     $(".modal").on("shown.bs.modal", function() {
