@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const server = require("http");
 const socket = require("socket.io");
+const QRCode = require("qrcode");
+const ip = require("ip");
 
 const RoomsHandler = require("./src/handlers/rooms-handler.js");
 const SocketHandler = require("./src/handlers/socket-handler.js");
@@ -24,12 +26,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 /** Routes */
 
-routes.get("/", (req, res) => {
+routes.get("/", async (req, res) => {
 
     const rooms = roomsHandler.getAllRooms();
 
+    const ipAddress = `http://${ip.address()}:${PORT}`;
+
+    const ipAddressAsQRCode = await QRCode.toDataURL(ipAddress);
+
     res.render("index.ejs", {
-        rooms: rooms
+        rooms,
+        ipAddress,
+        ipAddressAsQRCode
     });
 });
 

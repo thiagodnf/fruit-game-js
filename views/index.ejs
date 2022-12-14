@@ -8,30 +8,47 @@
 <body>
     <%- include('includes/navbar'); %>
     <div class="container-fluid">
-        <div class="card">
-            <div class="card-header ">
-                <div class="row">
-                    <div class="col mt-1 font-weight-bold">Rooms</div>
-                    <div class="col-auto">
-                        <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#newRoomModal">New Room</a>
+        <div class="row">
+            <div class="col-12 col-sm-4 col-md-3 col-lg-2 mb-2">
+                <div class="card">
+                    <div class="card-body ">
+                        <p>Please access:</p>
+                        <div class="d-none d-sm-block">
+                            <img src="<%= ipAddressAsQRCode %>" width="100%"/>
+                            <p class="text-center"> or type:</p>
+                        </div>
+                        <p class="text-center mb-0"><a href="<%= ipAddress %>"><%= ipAddress %></a></p>
                     </div>
                 </div>
             </div>
-            <div class="list-group list-group-flush">
-                <% rooms.forEach(function(room){ %>
-                    <a href="rooms/<%= room.id %>" class="list-group-item list-group-item-action">
+            <div class="col-12 col-sm-8 col-md-9 col-lg-10">
+                <div class="card">
+                    <div class="card-header ">
                         <div class="row">
-                            <div class="col"><%= room.name %></div>
+                            <div class="col mt-1 font-weight-bold">Rooms</div>
                             <div class="col-auto">
-                                <span class="badge badge-primary badge-pill text-right"><%= Object.keys(room.game.players).length  %></span>
+                                <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#newRoomModal">New Room</a>
                             </div>
                         </div>
-                    </a>
-                <% }); %>
-                <% if (rooms.length == 0) { %>
-                    <li class="list-group-item">No Rooms</li>
-                <% } %>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <% rooms.forEach(function(room){ %>
+                            <a href="rooms/<%= room.id %>" class="list-group-item list-group-item-action">
+                                <div class="row">
+                                    <div class="col"><%= room.name %></div>
+                                    <div class="col-auto">
+                                        <span class="badge badge-primary badge-pill text-right"><%= Object.keys(room.game.players).length  %></span>
+                                    </div>
+                                </div>
+                            </a>
+                        <% }); %>
+                        <% if (rooms.length == 0) { %>
+                            <li class="list-group-item">No Rooms</li>
+                        <% } %>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
     <!-- Modal -->
