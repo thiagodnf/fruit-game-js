@@ -8,7 +8,7 @@
         "dev": "nodemon server.js",
         "lint": "npx eslint .",
         "lint-fix": "npx eslint . --fix",
-        "update-dependencies": "ncu -u"
+        "update-dependencies": "npx npm-check-updates -u"
     },
     "author": "Thiago Ferreira",
     "license": "MIT",
