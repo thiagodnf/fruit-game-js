@@ -14,7 +14,7 @@ A Multiplayer Fruit Game in Javascript
 
 Please access the following link:
 
-> [https://fruit-game-js.herokuapp.com](https://fruit-game-js.onrender.com)
+> https://fruit-game-js.onrender.com
 
 Create a new room and set the timer for the game. For now, the available options are:
 
