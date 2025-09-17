@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const server = require("http");
 const socket = require("socket.io");
 const QRCode = require("qrcode");
-const ip = require("ip");
 
 const RoomsHandler = require("./src/handlers/rooms-handler.js");
 const SocketHandler = require("./src/handlers/socket-handler.js");
@@ -30,7 +29,8 @@ routes.get("/", async (req, res) => {
 
     const rooms = roomsHandler.getAllRooms();
 
-    const ipAddress = `http://${ip.address()}:${PORT}`;
+    // const ipAddress = `http://${ip.address()}:${PORT}`;
+    const ipAddress = `http://localhost:${PORT}`;
 
     const ipAddressAsQRCode = await QRCode.toDataURL(ipAddress);
 
@@ -68,7 +68,7 @@ routes.post("/rooms/create", function (req, res) {
 
 app.use("/", routes);
 
-app.use("*", function (req, res) {
+app.use((req, res) => {
     res.send("Page not found");
 });
 
